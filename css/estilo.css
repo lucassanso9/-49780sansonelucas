@@ -1,4 +1,4 @@
-* {
+/* * {
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -30,11 +30,11 @@ p {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
+} */
 
 
 /* barra de navegación */
-
+/* 
 nav {
     position: fixed;
     z-index: 1;
@@ -60,12 +60,12 @@ nav {
     text-transform: uppercase;
     list-style: none;
 }
-
+ */
 
 
 
 /* grilla de productos */
-
+/* 
 .product_grid_section {
     align-content: center;
     align-items: center;
@@ -95,10 +95,10 @@ nav {
     padding: 0;
     position: relative;
 }
-
+ */
 /* cards de productos */
 
-
+/* 
 .card_producto {
     display: flex;
     width: 15vw;
@@ -148,10 +148,10 @@ img {
     font-size: 24px;
     font-weight: bold;
 }
-
+ */
 
 /* Boton compra */
-
+/* 
 .button_content {
     display: inline-flex;
     padding: 0.5rem;
@@ -170,3 +170,5 @@ img {
     text-decoration: none;
     text-transform: uppercase;
 }
+
+ */
