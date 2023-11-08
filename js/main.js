@@ -58,12 +58,12 @@ console.log("Gracias por visitar nuestra tienda.");
 
 
 //No se por que pero al iniciar la consola no se muestran los productos en la consola del navegador, sólo después de haber apretado f5 o "refrescar" la pestaña.
-function Producto(nombre, especificaciones, identificador, precio, cantidades) {
+/* function Producto(nombre, especificaciones, identificador, precio, cantidades) {
     this.nombre = nombre.toUpperCase();
     this.especificaciones = especificaciones;
     this.identificador = identificador;
     this.precio = parseFloat(precio.replace('$', ''));
-    this.cantidades = ("");
+    this.cantidades = parseInt("");
 }
 
 const PRODUCTO1 = new Producto("Producto1", "Remera", "01", "2000", 0);
@@ -89,12 +89,18 @@ do {
     if (seleccion === "1") {
         console.log(PRODUCTO1);
         productoSeleccionado = PRODUCTO1;       
-        cantidadesSeleccionadas = prompt (("¿Cuántas unidades quiere agregar?")) + PRODUCTO1.cantidades;
+        cantidadesSeleccionadas = parseInt (prompt (("¿Cuántas unidades quiere agregar?")) + PRODUCTO1.cantidades);
         valor = PRODUCTO1.precio * cantidadesSeleccionadas;
     } else if (seleccion === "2") {
-        productoSeleccionado = PRODUCTO2;
+        console.log(PRODUCTO2);
+        productoSeleccionado = PRODUCTO2;       
+        cantidadesSeleccionadas = parseInt (prompt (("¿Cuántas unidades quiere agregar?")) + PRODUCTO2.cantidades);
+        valor = PRODUCTO2.precio * cantidadesSeleccionadas;
     } else if (seleccion === "3") {
-        productoSeleccionado = PRODUCTO3;
+        console.log(PRODUCTO3);
+        productoSeleccionado = PRODUCTO3;       
+        cantidadesSeleccionadas = parseInt (prompt (("¿Cuántas unidades quiere agregar?")) + PRODUCTO3.cantidades);
+        valor = PRODUCTO3.precio * cantidadesSeleccionadas;
     } else {
         console.log("Opción no válida. Por favor, seleccione 1, 2 o 3.");
         continue;
@@ -115,12 +121,12 @@ do {
     if (seleccionProducto !== "si" && seleccionProducto !== "sí") {
         break; // Sale del bucle principal si la respuesta no es "si" o "sí"
     }
-    console.log("agregaste" + seleccionProducto,);
+    console.log("agregaste" + cantidadesSeleccionadas + productoSeleccionado,);
 } while (true); // Bucle principal infinito
 
 
 
-console.log(cantidadesSeleccionadas + "Gracias por visitar nuestra tienda.");
+console.log(cantidadesSeleccionadas + "Gracias por visitar nuestra tienda."); */
 
 
 
@@ -152,3 +158,88 @@ console.log()
 //Calcular envio
 
 //
+
+function Producto(nombre, especificaciones, identificador, precio, cantidades) {
+    this.nombre = nombre.toUpperCase();
+    this.especificaciones = especificaciones;
+    this.identificador = identificador;
+    this.precio = parseFloat(precio.replace('$', ''));
+    this.cantidades = parseInt("");
+}
+
+const PRODUCTO1 = new Producto("Producto1", "Remera", "01", "2000", 0);
+const PRODUCTO2 = new Producto("Producto2", "Short", "02", "1500");
+const PRODUCTO3 = new Producto("Producto3", "Medias", "03", "3500");
+
+let seleccion;
+let productoSeleccionado;
+let valor;
+let cantidadesSeleccionadas;
+
+//El siguiente codigo muestra los productos en la consola
+
+console.log(PRODUCTO1); 
+console.log(PRODUCTO2);
+console.log(PRODUCTO3);
+
+//Mostrar el producto seleccionado
+
+do {
+    seleccion = prompt("Seleccione un producto escribiendo: 1, 2 o 3");
+
+    if (seleccion === "1") {
+        console.log(PRODUCTO1);
+        productoSeleccionado = PRODUCTO1;
+    } else if (seleccion === "2") {
+        console.log(PRODUCTO2);
+        productoSeleccionado = PRODUCTO2;
+    } else if (seleccion === "3") {
+        console.log(PRODUCTO3);
+        productoSeleccionado = PRODUCTO3;
+    } else {
+        console.log("Opción no válida. Por favor, seleccione 1, 2 o 3.");
+        continue;
+    }
+
+    // Pide la cantidad hasta que se ingrese un número válido
+    while (true) {
+        cantidadesSeleccionadas = parseInt(prompt("¿Cuántas unidades quiere agregar?"));
+        if (!isNaN(cantidadesSeleccionadas)) {
+            valor = productoSeleccionado.precio * cantidadesSeleccionadas;
+            console.log("El valor total es: $" + valor);
+            break;
+        } else {
+            console.log("La cantidad ingresada no es válida. Por favor, ingrese un número.");
+        }
+    }
+} while (isNaN(cantidadesSeleccionadas));
+
+//muestra la informacion del producto
+    console.log("Información del Producto seleccionado:");
+    console.log("Nombre: " + productoSeleccionado.nombre);
+    console.log("Especificaciones: " + productoSeleccionado.especificaciones);
+    console.log("Identificador: " + productoSeleccionado.identificador);
+    console.log("Precio: $" + productoSeleccionado.precio);
+    console.log("Total: " + valor);
+
+    let seguirSeleccionado;
+    let seleccionProducto;
+    
+    do {
+        seleccionProducto = prompt("¿Desea agregar este producto al carrito? (Si/No)").toLowerCase();
+
+    if (seleccionProducto === "si" || seleccionProducto === "sí") {
+        console.log("has agregado el producto");
+        seguirSeleccionado = prompt("¿Desea agregar otra cosa? (Si/No)").toLowerCase();
+    } else if (seguirSeleccionado === "no" || "sí") {
+        break; // Salir del bucle principal si la respuesta es "no"
+    }
+
+} while (seguirSeleccionado === "si" || seguirSeleccionado === "sí");
+    console.log("agregaste" + Producto.cantidadesSeleccionadas + productoSeleccionado,);
+while (seguirSeleccionado === "no" ) {
+}
+
+
+
+console.log("Has añadido" + productoSeleccionado.cantidadesSeleccionadas + Producto);
