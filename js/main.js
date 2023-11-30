@@ -1,245 +1,341 @@
-///Identificacion de productos y propiedades
+/* const CARD_PRODUCTO = document.getElementById("cardProductos");
 
-/* 
-function Producto(nombre, especificaciones, identificador, precio) {
+CARD_PRODUCTO.innerHTML = `
+            <div class="producto">
+                    <img src="./Imagenes/Remera_Nik_marron.jpeg" alt="remera beige">
+                <div class="producto_descripcion">
+                    <h1>Remera Just do it</h1>
+                    <p>Remera de algodón</p>
+                <div class="price">
+                    <p class="price">$5000</p>
+                </div>
+                <div class="button_content">
+                    <a class="button_text" href="">Agregar</a>
+            </div>
+`;
+
+
+function Producto(nombre, especificaciones, identificador, precio, stock) {
     this.nombre = nombre.toUpperCase();
     this.especificaciones = especificaciones;
     this.identificador = identificador;
-    this.precio = parseFloat(precio.replace('$', ''));
+    this.precio = parseFloat(precio);
+    this.stock = stock;
 }
 
-const PRODUCTO1 = new Producto("Producto1", "Remera", "01", "2000");
-const PRODUCTO2 = new Producto("Producto2", "Short", "02", "1500");
-const PRODUCTO3 = new Producto("Producto3", "Medias", "03", "3500");
-
-let seleccion;
-let productoSeleccionado;
-
-//El siguiente codigo muestra los productos en la consola
-console.log(PRODUCTO1);
-console.log(PRODUCTO2);
-console.log(PRODUCTO3);
-
-//Mostrar el producto seleccionado
-do {
-    seleccion = prompt("Seleccione un producto escribiendo: 1, 2 o 3");
-
-    if (seleccion === "1") {
-        productoSeleccionado = PRODUCTO1;
-    } else if (seleccion === "2") {
-        productoSeleccionado = PRODUCTO2;
-    } else if (seleccion === "3") {
-        productoSeleccionado = PRODUCTO3;
-    } else {
-        console.log("Opción no válida. Por favor, seleccione 1, 2 o 3.");
-        continue;
-    }
-
-    console.log("Información del Producto seleccionado:");
-    console.log("Nombre: " + productoSeleccionado.nombre);
-    console.log("Especificaciones: " + productoSeleccionado.especificaciones);
-    console.log("Identificador: " + productoSeleccionado.identificador);
-    console.log("Precio: $" + productoSeleccionado.precio);
-
-    let seleccionNueva;
-    do {
-        seleccionNueva = prompt("¿Desea seleccionar otro producto? (Sí/No)").toLowerCase();
-    } while (seleccionNueva !== "si" && seleccionNueva !== "sí" && seleccionNueva !== "no");
-
-    if (seleccionNueva !== "si" && seleccionNueva !== "sí") {
-        break; // Sale del bucle principal si la respuesta no es "si" o "sí"
-    }
-} while (true); // Bucle principal infinito
-
-
-
-console.log("Gracias por visitar nuestra tienda.");
- */
-
-
-//No se por que pero al iniciar la consola no se muestran los productos en la consola del navegador, sólo después de haber apretado f5 o "refrescar" la pestaña.
-/* function Producto(nombre, especificaciones, identificador, precio, cantidades) {
-    this.nombre = nombre.toUpperCase();
-    this.especificaciones = especificaciones;
-    this.identificador = identificador;
-    this.precio = parseFloat(precio.replace('$', ''));
-    this.cantidades = parseInt("");
+// Genera un stock aleatorio entre 30 y 45 unidades para cada producto
+function generarStockAleatorio() {
+    return Math.floor(Math.random() * (45 - 30 + 1)) + 30;
 }
 
-const PRODUCTO1 = new Producto("Producto1", "Remera", "01", "2000", 0);
-const PRODUCTO2 = new Producto("Producto2", "Short", "02", "1500");
-const PRODUCTO3 = new Producto("Producto3", "Medias", "03", "3500");
+const PRODUCTO1 = new Producto("Producto1", "Remera", "01", "2000", generarStockAleatorio());
+const PRODUCTO2 = new Producto("Producto2", "Short", "02", "1500", generarStockAleatorio());
+const PRODUCTO3 = new Producto("Producto3", "Medias", "03", "3500", generarStockAleatorio());
+const PRODUCTO4 = new Producto("Producto4", "Campera", "04", "8000", generarStockAleatorio());
+const PRODUCTO5 = new Producto("Producto5", "Pantalón", "05", "12000", generarStockAleatorio());
 
-let seleccion;
-let productoSeleccionado;
-let valor;
-let cantidadesSeleccionadas;
+const INVENTARIO = [PRODUCTO1, PRODUCTO2, PRODUCTO3, PRODUCTO4, PRODUCTO5];
+const CARRITO = [];
 
-//El siguiente codigo muestra los productos en la consola
-
-console.log(PRODUCTO1); 
-console.log(PRODUCTO2);
-console.log(PRODUCTO3);
-
-//Mostrar el producto seleccionado
-
-do {
-    seleccion = prompt("Seleccione un producto escribiendo: 1, 2 o 3");
-
-    if (seleccion === "1") {
-        console.log(PRODUCTO1);
-        productoSeleccionado = PRODUCTO1;       
-        cantidadesSeleccionadas = parseInt (prompt (("¿Cuántas unidades quiere agregar?")) + PRODUCTO1.cantidades);
-        valor = PRODUCTO1.precio * cantidadesSeleccionadas;
-    } else if (seleccion === "2") {
-        console.log(PRODUCTO2);
-        productoSeleccionado = PRODUCTO2;       
-        cantidadesSeleccionadas = parseInt (prompt (("¿Cuántas unidades quiere agregar?")) + PRODUCTO2.cantidades);
-        valor = PRODUCTO2.precio * cantidadesSeleccionadas;
-    } else if (seleccion === "3") {
-        console.log(PRODUCTO3);
-        productoSeleccionado = PRODUCTO3;       
-        cantidadesSeleccionadas = parseInt (prompt (("¿Cuántas unidades quiere agregar?")) + PRODUCTO3.cantidades);
-        valor = PRODUCTO3.precio * cantidadesSeleccionadas;
-    } else {
-        console.log("Opción no válida. Por favor, seleccione 1, 2 o 3.");
-        continue;
+function mostrarInventario() {
+    console.log("Inventario de productos:");
+    for (let i = 0; i < INVENTARIO.length; i++) {
+        console.log(`${i + 1}. Producto: ${INVENTARIO[i].nombre}, Precio: $${INVENTARIO[i].precio}, Stock: ${INVENTARIO[i].stock}`);
     }
-    
-    console.log("Información del Producto seleccionado:");
-    console.log("Nombre: " + productoSeleccionado.nombre);
-    console.log("Especificaciones: " + productoSeleccionado.especificaciones);
-    console.log("Identificador: " + productoSeleccionado.identificador);
-    console.log("Precio: $" + productoSeleccionado.precio);
-    console.log("Total: " + valor);
-
-    let seleccionProducto;
-    do {
-        seleccionProducto = prompt("¿Desea agregar este producto al carrito? (Sí/No)").toLowerCase();
-    } while (seleccionProducto !== "si" && seleccionProducto !== "sí" && seleccionProducto !== "no");
-
-    if (seleccionProducto !== "si" && seleccionProducto !== "sí") {
-        break; // Sale del bucle principal si la respuesta no es "si" o "sí"
-    }
-    console.log("agregaste" + cantidadesSeleccionadas + productoSeleccionado,);
-} while (true); // Bucle principal infinito
-
-
-
-console.log(cantidadesSeleccionadas + "Gracias por visitar nuestra tienda."); */
-
-
-
-
-
-//Usar un continue para recrear una seccion donde hay cards de productos disponibles con stock y sin stock Mostrar primero las que si y luego las que no.
-
-
-
-//Actualizaciones de producto a carrito
-//ingrese la cantidad de x producto que quiera sumar al carrito y que se guarde (usar bucle y preguntar si/no seguir agregando de ese producto)
-//mostrar la cantidad de x, y, z (productos) que hay de cada uno, mostrar el total y precios
-
-
-/* if seleccion = si ==> prompt("¿Quiere agregar Remera al carrito?");
-
-    prompt("¿Quiere seguir viendo productos para agregar?");
-    else if {}
-    else { }
-console.log()
- */
-
-
-
-//Metodos de pago(pedir datos por ej nombre y devolver alerta si no se da un nombre, o un nuymero y devolver alerta si pone letras)
-
-
-
-//Calcular envio
-
-//
-
-function Producto(nombre, especificaciones, identificador, precio, cantidades) {
-    this.nombre = nombre.toUpperCase();
-    this.especificaciones = especificaciones;
-    this.identificador = identificador;
-    this.precio = parseFloat(precio.replace('$', ''));
-    this.cantidades = parseInt("");
 }
 
-const PRODUCTO1 = new Producto("Producto1", "Remera", "01", "2000", 0);
-const PRODUCTO2 = new Producto("Producto2", "Short", "02", "1500");
-const PRODUCTO3 = new Producto("Producto3", "Medias", "03", "3500");
+mostrarInventario(); // Mostrar el inventario al inicio
 
-let seleccion;
-let productoSeleccionado;
-let valor;
-let cantidadesSeleccionadas;
+function realizarCompra() {
+    const seleccion = prompt("Elija un producto (1-5) o escriba 'salir' para finalizar la compra:");
 
-//El siguiente codigo muestra los productos en la consola
-
-console.log(PRODUCTO1); 
-console.log(PRODUCTO2);
-console.log(PRODUCTO3);
-
-//Mostrar el producto seleccionado
-
-do {
-    seleccion = prompt("Seleccione un producto escribiendo: 1, 2 o 3");
-
-    if (seleccion === "1") {
-        console.log(PRODUCTO1);
-        productoSeleccionado = PRODUCTO1;
-    } else if (seleccion === "2") {
-        console.log(PRODUCTO2);
-        productoSeleccionado = PRODUCTO2;
-    } else if (seleccion === "3") {
-        console.log(PRODUCTO3);
-        productoSeleccionado = PRODUCTO3;
+    if (seleccion.toLowerCase() === 'salir') {
+        finalizarCompra();
     } else {
-        console.log("Opción no válida. Por favor, seleccione 1, 2 o 3.");
-        continue;
-    }
+        const indice = parseInt(seleccion) - 1;
+        if (!isNaN(indice) && indice >= 0 && indice < INVENTARIO.length) {
+            const productoElegido = INVENTARIO[indice];
+            const cantidad = parseInt(prompt("Ingrese la cantidad a comprar:"));
 
-    // Pide la cantidad hasta que se ingrese un número válido
-    while (true) {
-        cantidadesSeleccionadas = parseInt(prompt("¿Cuántas unidades quiere agregar?"));
-        if (!isNaN(cantidadesSeleccionadas)) {
-            valor = productoSeleccionado.precio * cantidadesSeleccionadas;
-            console.log("El valor total es: $" + valor);
-            break;
+            if (cantidad > productoElegido.stock) {
+                alert("Stock insuficiente. Por favor, elija una cantidad menor o igual al stock disponible.");
+            } else {
+                agregarAlCarrito(productoElegido, cantidad);
+            }
+
+            realizarCompra();
         } else {
-            console.log("La cantidad ingresada no es válida. Por favor, ingrese un número.");
+            console.log("Selección no válida. Por favor, elija un producto válido.");
+            realizarCompra();
         }
     }
-} while (isNaN(cantidadesSeleccionadas));
-
-//muestra la informacion del producto
-    console.log("Información del Producto seleccionado:");
-    console.log("Nombre: " + productoSeleccionado.nombre);
-    console.log("Especificaciones: " + productoSeleccionado.especificaciones);
-    console.log("Identificador: " + productoSeleccionado.identificador);
-    console.log("Precio: $" + productoSeleccionado.precio);
-    console.log("Total: " + valor);
-
-    let seguirSeleccionado;
-    let seleccionProducto;
-    
-    do {
-        seleccionProducto = prompt("¿Desea agregar este producto al carrito? (Si/No)").toLowerCase();
-
-    if (seleccionProducto === "si" || seleccionProducto === "sí") {
-        console.log("has agregado el producto");
-        seguirSeleccionado = prompt("¿Desea agregar otra cosa? (Si/No)").toLowerCase();
-    } else if (seguirSeleccionado === "no" || "sí") {
-        break; // Salir del bucle principal si la respuesta es "no"
-    }
-
-} while (seguirSeleccionado === "si" || seguirSeleccionado === "sí");
-    console.log("agregaste" + Producto.cantidadesSeleccionadas + productoSeleccionado,);
-while (seguirSeleccionado === "no" ) {
 }
 
+function agregarAlCarrito(producto, cantidad) {
+    CARRITO.push({
+        producto: producto,
+        cantidad: cantidad,
+        total: producto.precio * cantidad,
+    });
+    producto.stock -= cantidad;
+    console.log(`Se agregaron ${cantidad} unidades de ${producto.nombre} al carrito.`);
+}
+
+function finalizarCompra() {
+    console.log("Carrito de compras:");
+    for (const item of CARRITO) {
+        console.log(`${item.cantidad} unidades de ${item.producto.nombre} - Total: $${item.total}`);
+    }
+
+    const precioTotal = calcularPrecioTotal();
+    console.log("Precio total: $" + precioTotal);
+}
+
+function calcularPrecioTotal() {
+    let total = 0;
+    for (const item of CARRITO) {
+        total += item.total;
+    }
+    return total;
+}
+
+// Iniciar la simulación de compra
+realizarCompra(); */
+
+const PRODUCTOS = [
+    {
+        nombre: "Camiseta",
+        precio: 2000,
+        descripcion: "Una camiseta cómoda para el uso diario.",
+        categoria: "Ropa para hombres",
+        colores: ["Azul", "Blanco", "Negro"],
+        tallas: ["S", "M", "L"],
+        material: "Algodón",
+        imagenes: {
+            azul: ["url_imagen_camiseta_azul_1", "url_imagen_camiseta_azul_2"],
+            blanco: ["url_imagen_camiseta_blanco_1", "url_imagen_camiseta_blanco_2"],
+            negro: ["url_imagen_camiseta_negro_1", "url_imagen_camiseta_negro_2"]
+        },
+        inventarioDisponible: {
+            azul: { S: 10, M: 15, L: 20 },
+            blanco: { S: 5, M: 10, L: 12 },
+            negro: { S: 8, M: 12, L: 18 }
+        },
+        sku: "CAM001"
+    },
+    {
+        nombre: "Pantalón",
+        precio: 3000,
+        descripcion: "Un pantalón elegante y duradero.",
+        categoria: "Ropa para hombres",
+        colores: ["Negro", "Gris"],
+        tallas: ["M", "L", "XL"],
+        material: "Mezclilla",
+        imagenes: {
+            negro: ["url_imagen_pantalon_negro_1", "url_imagen_pantalon_negro_2"],
+            gris: ["url_imagen_pantalon_gris_1", "url_imagen_pantalon_gris_2"]
+        },
+        inventarioDisponible: {
+            negro: { M: 10, L: 8, XL: 5 },
+            gris: { M: 15, L: 12, XL: 10 }
+        },
+        sku: "PAN002"
+    },
+    {
+        nombre: "Campera deportiva",
+        precio: 3900,
+        descripcion: "Una campera para realizar ejercicio físico.",
+        categoria: "Ropa para hombres",
+        colores: ["Gris", "Negro", "Verde"],
+        tallas: ["S", "M", "L"],
+        material: "Poliéster",
+        imagenes: {
+            gris: ["url_imagen_campera_gris_1", "url_imagen_campera_gris_2"],
+            negro: ["url_imagen_campera_negro_1", "url_imagen_campera_negro_2"],
+            verde: ["url_imagen_campera_verde_1", "url_imagen_campera_verde_2"]
+        },
+        inventarioDisponible: {
+            gris: { S: 12, M: 15, L: 18 },
+            negro: { S: 10, M: 12, L: 15 },
+            verde: { S: 8, M: 10, L: 12 }
+        },
+        sku: "CAM003"
+    },
+    {
+        nombre: "Campera con Capucha",
+        precio: 3400,
+        descripcion: "Una campera cómoda para los días frescos.",
+        categoria: "Ropa para mujeres",
+        colores: ["Gris", "Negro", "Azul"],
+        tallas: ["S", "M", "L"],
+        material: "Poliéster",
+        imagenes: {
+            gris: ["url_imagen_campera_gris_1", "url_imagen_campera_gris_2"],
+            negro: ["url_imagen_campera_negro_1", "url_imagen_campera_negro_2"],
+            azul: ["url_imagen_campera_azul_1", "url_imagen_campera_azul_2"]
+        },
+        inventarioDisponible: {
+            gris: { S: 12, M: 15, L: 18 },
+            negro: { S: 10, M: 12, L: 15 },
+            azul: { S: 8, M: 10, L: 12 }
+        },
+        sku: "CAM004"
+    },
+    {
+        nombre: "Zapatillas Deportivas",
+        precio: 5000,
+        descripcion: "Zapatillas cómodas y resistentes para el deporte.",
+        categoria: "Calzado",
+        colores: ["Blanco", "Negro", "Rojo"],
+        tallas: ["40", "42", "44"],
+        material: "Cuero sintético",
+        imagenes: {
+            blanco: ['./assets/Zapatilla.jpg', '../assets/Zapatilla.jpg'],
+            negro: ["../assets/Zapatilla.jpg", "../assets/Zapatilla.jpg"],
+            rojo: ["../assets/Zapatilla.jpg", "../assets/Zapatilla.jpg"]
+        },
+        inventarioDisponible: {
+            blanco: { "40": 5, "42": 8, "44": 10 },
+            negro: { "40": 3, "42": 5, "44": 7 },
+            rojo: { "40": 7, "42": 10, "44": 12 }
+        },
+        sku: "ZAP005"
+    }
+];
+
+const CARD_PRODUCTO = document.getElementById("producto-card");
+
+PRODUCTOS.forEach(producto => {
+    // Crear un nuevo div para cada producto
+    const PRODUCTO_DIV = document.createElement("div");
+    PRODUCTO_DIV.classList.add("producto");
+
+    
+
+    // Obtener la primera imagen y el primer color (si existen)
+    const PRIMER_COLOR = producto.colores && producto.colores[0];
+    const PRIMERA_IMAGEN = PRIMER_COLOR && producto.imagenes && producto.imagenes[PRIMER_COLOR] && producto.imagines[PRIMER_COLOR][0];
+
+    const RUTA_IMAGEN = PRIMERA_IMAGEN || './assets/default.webp';
 
 
-console.log("Has añadido" + productoSeleccionado.cantidadesSeleccionadas + Producto);
+    // Agregar el contenido generado a ese div
+    PRODUCTO_DIV.innerHTML = `
+        <img src="${PRIMERA_IMAGEN || RUTA_IMAGEN}" alt="${producto.nombre}">
+        <div class="producto-info">
+            <h2>${producto.nombre}</h2>
+            <p>${producto.descripción}</p>
+            <span class="precio">$${producto.precio}</span>
+            <button class="boton-agregar">Agregar al Carrito</button>
+        </div>
+    `;
+
+    // Agregar el div del producto al contenedor principal
+    CARD_PRODUCTO.appendChild(PRODUCTO_DIV);
+});
+
+
+const CARRITO = [];
+
+function mostrarInventario() {
+    console.log("Inventario de productos:");
+    for (let i = 0; i < PRODUCTOS.length; i++) {
+        const producto = PRODUCTOS[i];
+        console.log(`${i + 1}. Producto: ${producto.nombre}, Precio: $${producto.precio}, Stock: ${obtenerStock(producto)}`);
+    }
+}
+
+function obtenerStock(producto) {
+    // Calcular el stock total sumando los stocks de todos los colores y talles
+    let stockTotal = 0;
+
+    for (const color in producto.inventarioDisponible) {
+        for (const talle in producto.inventarioDisponible[color]) {
+            stockTotal += producto.inventarioDisponible[color][talle];
+        }
+    }
+
+    return stockTotal;
+}
+
+mostrarInventario(); // Mostrar el inventario al inicio
+
+function realizarCompra() {
+    const seleccion = prompt("Elija un producto (1-5) o escriba 'salir' para finalizar la compra:");
+
+    if (seleccion.toLowerCase() === 'salir') {
+        finalizarCompra();
+    } else {
+        const INDICE = parseInt(seleccion) - 1;
+        if (!isNaN(INDICE) && INDICE >= 0 && INDICE < PRODUCTOS.length) {
+            const productoElegido = PRODUCTOS[INDICE];
+            const coloresDisponibles = Object.keys(productoElegido.inventarioDisponible);
+            const tallesDisponibles = Object.keys(productoElegido.inventarioDisponible[coloresDisponibles[0]]);
+
+            // Mostrar colores y talles disponibles
+            console.log(`Colores disponibles: ${coloresDisponibles.join(', ')}`);
+            console.log(`Talles disponibles: ${tallesDisponibles.join(', ')}`);
+
+            const color = prompt("Ingrese el color deseado:");
+            const talle = prompt("Ingrese el talle deseado:");
+
+            if (
+                coloresDisponibles.includes(color.toLowerCase()) &&
+                tallesDisponibles.includes(talle.toUpperCase())
+            ) {
+                const cantidad = parseInt(prompt("Ingrese la cantidad a comprar:"));
+
+                if (cantidad > obtenerStockPorColorYTalle(productoElegido, color, talle)) {
+                    alert("Stock insuficiente. Por favor, elija una cantidad menor o igual al stock disponible.");
+                } else {
+                    agregarAlCarrito(productoElegido, color, talle, cantidad);
+                }
+
+                realizarCompra();
+            } else {
+                alert("Selección no válida. Por favor, elija un color y talle disponibles.");
+                realizarCompra();
+            }
+        } else {
+            alert("Selección no válida. Por favor, elija un producto válido.");
+            realizarCompra();
+        }
+    }
+}
+
+function obtenerStockPorColorYTalle(producto, color, talle) {
+    return producto.inventarioDisponible[color.toLowerCase()][talle.toUpperCase()] || 0;
+}
+
+function agregarAlCarrito(producto, color, talle, cantidad) {
+    CARRITO.push({
+        producto: producto,
+        color: color.toLowerCase(),
+        talle: talle.toUpperCase(),
+        cantidad: cantidad,
+        total: producto.precio * cantidad,
+    });
+    producto.inventarioDisponible[color.toLowerCase()][talle.toUpperCase()] -= cantidad;
+    console.log(`Se agregaron ${cantidad} unidades de ${producto.nombre} (${color}, Talle: ${talle}) al carrito.`);
+}
+
+function finalizarCompra() {
+    console.log("Carrito de compras:");
+    for (const item of CARRITO) {
+        console.log(`${item.cantidad} unidades de ${item.producto.nombre} (${item.color}, Talle: ${item.talle}) - Total: $${item.total}`);
+    }
+
+    const precioTotal = calcularPrecioTotal();
+    console.log("Precio total: $" + precioTotal);
+}
+
+function calcularPrecioTotal() {
+    let total = 0;
+    for (const item of CARRITO) {
+        total += item.total;
+    }
+    return total;
+}
+
+// Iniciar la simulación de compra
+realizarCompra();
