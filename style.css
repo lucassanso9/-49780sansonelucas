@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: snow;
+}
+
+
+/* header */
+
+nav {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    background: linear-gradient(0.23turn, #000000, #000002, #2a2965);
+}
+
+.brand {
+    margin-left: 4vw;
+}
+.brand img {
+
+    height:150px;
+}
+
+.items {
+    display: flex;
+    gap: 1.5rem;
+    padding-right: 5rem;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    list-style: none;
+}
+
+
+
+/* GRILLA DE PRODUCTOS */
+
+#product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 200px;
+}
+
+
+/* CARD PRODUCTOS */
+
+.product-card {
+    display: flex;
+    width: auto;
+    height: 20.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.5rem;
+    background: #FFF;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+
+.img-container {
+    display: flex;
+    height: 50%;
+    padding: 0.75rem 0.75rem;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    flex: 1 0 0;
+    align-self: stretch;
+    flex-wrap: wrap;
+    background: #FFF;
+}
+
+.arrow-container {
+    position: relative;
+}
+
+.product-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    /* Puedes usar 'contain' en lugar de 'cover' si prefieres ajustar completamente dentro de la card sin recortar */
+    margin-bottom: 10px;
+}
+
+.color-selector {
+    display: flex;
+    width: 22rem;
+    height: 2rem;
+    align-items: center;
+    gap: 0.4rem;
+    position: relative;
+    right: 1rem;
+    padding-left: 1.2rem;
+    bottom: 3rem;
+}
+
+.color-circle {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    margin-right: 5px;
+    border: 1px solid #626262;
+    cursor: pointer;
+}
+
+/* cuerpo de la card */
+
+.card-body {
+    display: flex;
+    height: 50%;
+    padding: 1.125rem;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    align-self: stretch;
+    background: #F1F1F1;
+}
+
+.title-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.description-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 12px;
+}
+
+.price-card {
+    display: flex;
+    padding: 0rem 0.75rem;
+    align-items: center;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.price-card p {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.button-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.button-card-shop {
+    display: flex;
+    padding: 1.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    border-radius: 1.25rem;
+    background: linear-gradient(101deg, #00A861 5.5%, #4122FF 104.45%);
+}
+
+.button-card-shop:hover {
+    background-color: #45a049;
+}
+
+
+.button-card-shop {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-card-shop:hover {
+    background-color: #45a049;
+}
+
+
+/* CARRITO DE COMPRAS */
+
+#shopping-cart {
+    padding: 20px;
+    margin-top: 5rem;
+}
+
+#shopping-cart h2{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.cart-item .description-card{
+    display: flex;
+    align-items: center;
+}
+
+.cart-item p{
+    font-size: 2rem;
+}
+
+.cart-item .img-container{
+    width: 80px;
+}
+
+.cart-item img{
+    height: 10rem;
+    width: 10rem;
+}
+
+.delete-product-container {
+    display: flex;
+}
+
+.delete-product-container img{
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
