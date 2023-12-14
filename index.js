@@ -68,8 +68,8 @@ const PRODUCTS = [
         material: "Cuero sintético",
         imagenes: {
             grey: ['./assets/zapatilla-deportiva-gris.jpg', '../assets/Zapatilla.jpg'],
-            black: ["../assets/zapatilla-deportiva-negra.png", "../assets/Zapatilla.jpg"],
-            red: ["../assets/zapatilla-deportiva-roja.png", "../assets/Zapatilla.jpg"]
+            black: ["./assets/zapatilla-deportiva-negra.png", "../assets/Zapatilla.jpg"],
+            red: ["./assets/zapatilla-deportiva-roja.png", "../assets/Zapatilla.jpg"]
         },
         id: "005"
     }
