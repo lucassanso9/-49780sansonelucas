@@ -54,7 +54,7 @@ const PRODUCTS = [
         imagenes: {
             grey: ['./assets/campera-invierno-gris.jpg', "url_imagen_campera_gris_2"],
             black: ['./assets/campera-invierno-negra.webp', "url_imagen_campera_negro_2"],
-            blue: ['./assets/campera-invierno-azul.jpg', "url_imagen_campera_azul_2"]
+            darkblue: ['./assets/campera-invierno-azul.jpg', "url_imagen_campera_azul_2"]
         },
         id: "004"
     },
@@ -68,11 +68,105 @@ const PRODUCTS = [
         material: "Cuero sintético",
         imagenes: {
             grey: ['./assets/zapatilla-deportiva-gris.jpg', '../assets/Zapatilla.jpg'],
-            black: ["./assets/zapatilla-deportiva-negra.png", "../assets/Zapatilla.jpg"],
-            red: ["./assets/zapatilla-deportiva-roja.png", "../assets/Zapatilla.jpg"]
+            black: ["../assets/zapatilla-deportiva-negra.png", "../assets/Zapatilla.jpg"],
+            red: ["../assets/zapatilla-deportiva-roja.png", "../assets/Zapatilla.jpg"]
         },
         id: "005"
+    },
+    {
+        nombre: "Bermuda con bolsillos",
+        precio: 8240,
+        descripcion: "Bermuda de algodón con bolsillos, muy cómodas y facheras.",
+        categoria: "Calzado",
+        color: ["orange", "red", "black", "grey"],
+        tallas: ["S", "M", "L", "XL"],
+        material: "Algodón",
+        imagenes: {
+            orange: ['./assets/bermuda-algodon-naranja.jpg', './assets/bermuda-algodon-naranja-2.jpg'],
+            red: ['./assets/bermuda-algodon-roja.jpg', './assets/bermuda-algodon-roja-2.jpg'],
+            black: ['./assets/bermuda-algodon-negro.jpg', './assets/bermuda-algodon-negro-3.jpg'],
+            grey: ['./assets/bermuda-algodon-gris.jpg', "../assets/Zapatilla.jpg"]
+        },
+        id: "006"
+    },
+    {
+        nombre: "Remera Estampada",
+        precio: 12990,
+        descripcion: "Remera con estampado urbano, ideal para un look casual.",
+        categoria: "Ropa para hombres",
+        color: ["black", "white", "grey"],
+        tallas: ["S", "M", "L", "XL"],
+        material: "Algodón",
+        imagenes: {
+            pink: ['./assets/remera-estampada-oldpink.jpg', './assets/remera-estampada-oldpink-2.jpg'],
+            green: ['./assets/remera-estampada-verde.jpg', './assets/remera-estampada-verde-2.jpg'],
+            purple: ['./assets/remera-estampada-morada.jpg', './assets/remera-estampada-morada-2.jpg']
+        },
+        id: "007"
+    },
+    {
+        nombre: "Gorra Urbana",
+        precio: 6990,
+        descripcion: "Gorra estilo urbano para complementar tu outfit diario.",
+        categoria: "Accesorios para hombres",
+        color: ["black", "blue", "red"],
+        tallas: ["Única"],
+        material: "Poliéster",
+        imagenes: {
+            brown: ['./assets/gorra-urbana-marron.jpg', './assets/gorra-urbana-marron-2.jpg'],
+            blue: ['./assets/gorra-urbana-azul.jpg', './assets/gorra-urbana-azul-2.jpg'],
+            green: ['./assets/gorra-urbana-verde.jpg', './assets/gorra-urbana-verde-2.jpg']
+        },
+        id: "008"
+    },
+    {
+        nombre: "Buzo Streetwear",
+        precio: 24950,
+        descripcion: "Buzo con diseño urbano, perfecto para días frescos.",
+        categoria: "Ropa para hombres",
+        color: ["grey", "black", "green"],
+        tallas: ["S", "M", "L", "XL"],
+        material: "Algodón",
+        imagenes: {
+            grey: ['./assets/buzo-streetwear-gris.jpg', './assets/buzo-streetwear-gris-2.jpg'],
+            lightblue: ['./assets/buzo-streetwear-celeste.jpg', './assets/buzo-streetwear-celeste-2.jpg'],
+            orange: ['./assets/buzo-streetwear-salmon.jpg', './assets/buzo-streetwear-salmon-2.jpg']
+        },
+        id: "009"
+    },
+    {
+        nombre: "Riñonera Urbana",
+        precio: 7990,
+        descripcion: "Riñonera práctica y con estilo para llevar tus pertenencias.",
+        categoria: "Accesorios para hombres",
+        color: ["black", "grey", "blue"],
+        tallas: ["Única"],
+        material: "Nylon",
+        imagenes: {
+            red: ['./assets/rinonera-urbana-roja.jpg', './assets/rinonera-urbana-roja-2.jpg'],
+            grey: ['./assets/rinonera-urbana-gris.jpg', './assets/rinonera-urbana-gris-2.jpg'],
+            blue: ['./assets/rinonera-urbana-azul.jpg', './assets/rinonera-urbana-azul-2.jpg'],
+            yellow: ['./assets/rinonera-urbana-amarilla.jpg', './assets/rinonera-urbana-amarilla-2.jpg']
+        },
+        id: "010"
+    },
+    {
+        nombre: "Gorro de Invierno Urbano",
+        precio: 10990,
+        descripcion: "Gorro abrigado con diseño urbano para los días más fríos.",
+        categoria: "Accesorios para hombres",
+        color: ["black", "grey", "brown"],
+        tallas: ["Única"],
+        material: "Lana",
+        imagenes: {
+            purple: ['./assets/gorro-invierno-urbano-violeta.jpg', './assets/gorro-invierno-urbano-violeta-2.jpg'],
+            grey: ['./assets/gorro-invierno-urbano-gris.jpg', './assets/gorro-invierno-urbano-gris-2.jpg'],
+            brown: ['./assets/gorro-invierno-urbano-marron.jpg', './assets/gorro-invierno-urbano-marron-2.jpg']
+        },
+        id: "011"
     }
+
+
 ];
 
 let shopping_cart = [];
@@ -99,9 +193,14 @@ const SHOW_PRODUCTS = () => {
                 <div class="card-body">                
                     <div class="title-card">
                         <h2>${producto.nombre}</h2>
-                    </div>
+                    </div>                    
                     <div class="description-card">
                         <p>${producto.descripcion}</p>
+                    </div>
+                    <div class="size-buttons">
+                        ${producto.tallas.map(talla => `
+                            <button class="size-button" id="size${producto.id}-${talla}" onclick="selectSize('${producto.id}', '${talla}')">${talla}</button>
+                        `).join('')}
                     </div>
                     <div class="price-card">
                         <p>$ ${producto.precio}</p>
@@ -119,11 +218,9 @@ const SHOW_PRODUCTS = () => {
                 const selectedProduct = PRODUCTS.find(product => product.id === producto.id);
                 selectedProduct.selectedColor = colors[index];
 
-                // Cambiar la imagen del producto
                 const productImg = card.querySelector(".product-img");
                 productImg.src = selectedProduct.imagenes[selectedProduct.selectedColor][0];
 
-                // Agregar la clase "selected" al círculo seleccionado
                 COLOR_CIRCLES.forEach(c => c.classList.remove("selected"));
                 circle.classList.add("selected");
             });
@@ -131,32 +228,84 @@ const SHOW_PRODUCTS = () => {
 
         const BUTTON = document.getElementById(`boton${producto.id}`);
         BUTTON.addEventListener("click", () => {
-            agregarAlCarrito(producto.id);
+            const selectedSizeElement = card.querySelector(".size-button.selected");
+            const selectedSize = selectedSizeElement ? selectedSizeElement.innerText : null;
+        
+            if (!selectedSize) {
+                Swal.fire({
+                        title:"Por favor, selecciona un talle antes de agregar al carrito.",
+                        icon:"warning",
+                        toast: true,
+                        fontsize:"2rem",
+                        iconColor:"orange",
+                        confirmButtonText:"Entendido",
+                        confirmButtonColor: "green"
+                    })
+                return;
+            }
+        
+            agregarAlCarrito(producto.id, selectedSize);
+            Toastify({
+                text: "Se agregó el producto al carrito",
+                duration: 3000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "bottom",
+                position: "left",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+                onClick: function(){}
+            }).showToast();
+        });
+
+        const SIZE_BUTTONS = card.querySelectorAll(".size-button");
+        SIZE_BUTTONS.forEach(button => {
+            button.addEventListener("click", () => {
+                const selectedSize = button.innerText;
+                selectSize(producto.id, selectedSize);
+            });
         });
     });
 }
 
-const agregarAlCarrito = (productId) => {
+
+const agregarAlCarrito = (productId, selectedSize) => {
     const selectedProduct = PRODUCTS.find(product => product.id === productId);
 
-    // Si el producto no tiene la propiedad selectedColor, establecerla en el primer color disponible
     if (!selectedProduct.selectedColor) {
         selectedProduct.selectedColor = Object.keys(selectedProduct.imagenes)[0];
     }
 
-    // Verifica si el producto ya está en el carrito con el mismo color
-    const existingProductIndex = shopping_cart.findIndex(item => item.id === selectedProduct.id && item.selectedColor === selectedProduct.selectedColor);
+    if (!selectedSize) {
+        alert("Por favor, selecciona un tamaño antes de agregar al carrito.");
+        return;
+    }
+
+    const existingProductIndex = shopping_cart.findIndex(item => item.id === selectedProduct.id && item.selectedColor === selectedProduct.selectedColor && item.selectedSize === selectedSize);
 
     if (existingProductIndex !== -1) {
         shopping_cart[existingProductIndex].quantity += 1;
     } else {
-        shopping_cart.push({ ...selectedProduct, quantity: 1 });
+        shopping_cart.push({ ...selectedProduct, selectedSize, quantity: 1 });
     }
 
-    // Actualizar el carrito en el localStorage
     actualizarCarritoLocalStorage();
 
     console.log("Producto agregado al carrito:", selectedProduct);
+};
+
+const selectSize = (productId, selectedSize) => {
+    const sizeButtons = document.querySelectorAll(`.size-button`);
+
+    sizeButtons.forEach(button => {
+        button.classList.remove("selected");
+    });
+
+    const selectedButton = document.getElementById(`size${productId}-${selectedSize}`);
+    selectedButton.classList.add("selected");
 };
 
 const actualizarCarritoLocalStorage = () => {
@@ -164,47 +313,132 @@ const actualizarCarritoLocalStorage = () => {
     mostrarCarrito();
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+    const cartIcon = document.getElementById("cart-icon");
+    const shoppingCart = document.getElementById("shopping-cart");
+
+    cartIcon.addEventListener("click", function () {
+        shoppingCart.style.display = (shoppingCart.style.display === "block") ? "none" : "block";
+    });
+});
+
 const mostrarCarrito = () => {
     const carritoContainer = document.getElementById("shopping-cart");
     carritoContainer.innerHTML = "";
 
-    const tituloCarrito = document.createElement("div");
-    tituloCarrito.innerHTML = '<h2>Carrito de compras</h2>';
-    carritoContainer.appendChild(tituloCarrito);
+    const cartHeader = document.createElement("div");
+    cartHeader.innerHTML = `
+        <div class="cart-header">
+            <div class="cart-title-container">
+                <h2>Carrito de compras</h2>
+            </div>
+            <div class="cart-cancel-container">
+                <img src="./assets/Icons/cancel.svg" alt="icono cerrar carrito"  onclick="HIDE_CART()"/>
+            </div>
+        </div>
+    `;
+
+    carritoContainer.appendChild(cartHeader);
+
+    const cartItemsContainer = document.createElement("div");
+    cartItemsContainer.classList.add("cart-items-container");
+
+    let total = 0;
 
     shopping_cart.forEach((item, index) => {
         const carritoItem = document.createElement("div");
         carritoItem.classList.add("cart-item");
         carritoItem.innerHTML = `
-            <div class="img-container">
+            <div class="cart-img-container">
                 <img src="${item.imagenes[item.selectedColor][0]}" class="product-img" />
             </div>
-            <div class="description-card">
+            <div class="cart-description-card">
                 <h3>${item.nombre}</h3>
                 <p>Color: ${item.selectedColor}</p>
+                <p>Talla: ${item.selectedSize}</p>
             </div>
-            <div class="product-cart-quantity">
+            <div class="cart-product-quantity">
                 <h3>Unidades: ${item.quantity}</h3>
             </div>
-            <div class="price-card">
+            <div class="cart-price-card">
                 <p>$${item.precio * item.quantity}</p>
             </div>
             <div class="delete-product-container">
                 <img src="./assets/Icons/delete-icon.svg" alt="icono eliminar producto" onclick="eliminarDelCarrito(${index})">
             </div>
         `;
-        carritoContainer.appendChild(carritoItem);
+        cartItemsContainer.appendChild(carritoItem);
+
+        total += item.precio * item.quantity;
     });
+
+    carritoContainer.appendChild(cartItemsContainer);
+
+    const CART_FOOTER = document.createElement("div");
+    CART_FOOTER.classList.add("footer-cart-container");
+    CART_FOOTER.innerHTML = `
+
+            <div class="cart-total-container">
+                <h3>Total:</h3> <h3>$${total}
+            </div>        
+        <div class="action-btn-container">
+            <button type="button" class="btn acept">
+                <a href="#" onclick="CONTINUE_BUYING();">Continuar compra</a>
+            </button>
+            <button type="button" class="btn cancel">
+                <a href="#" onclick="EMPTY_CART();">Vaciar carrito</a>
+            </button>
+
+        </div>
+    `;
+
+    carritoContainer.appendChild(CART_FOOTER);
+};
+
+const EMPTY_CART = () => {
+    shopping_cart = [];
+    actualizarCarritoLocalStorage();
+    mostrarCarrito();
+    Toastify({
+        text: "Se ha vaciado el carrito",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "left",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #FF0000, #FF6600)",
+        },
+        onClick: function(){}
+    }).showToast();
+};
+
+const HIDE_CART = () => {
+    const carritoContainer = document.getElementById("shopping-cart");
+    carritoContainer.style.display = "none";
 };
 
 const eliminarDelCarrito = (index) => {
-    // Eliminar el producto del carrito
     shopping_cart.splice(index, 1);
+    Toastify({
+        text: "Se eliminó el producto del carrito",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "left",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #FF0000, #FF6600)",
+        },
+        onClick: function(){}
+    }).showToast();
 
-    // Actualizar el carrito en el localStorage
     actualizarCarritoLocalStorage();
 
-    // Volver a mostrar el carrito
     mostrarCarrito();
 };
 
@@ -214,3 +448,50 @@ window.addEventListener("load", () => {
 });
 
 SHOW_PRODUCTS();
+
+const CONTINUE_BUYING = () => {
+    if (shopping_cart.length === 0) {
+        Swal.fire({
+            title: "El carrito está vacío",
+            text: "Agrega productos antes de continuar.",
+            icon: "warning",
+            toast: true,
+            iconColor: "orange",
+            confirmButtonText: "Entendido",
+            confirmButtonColor: "green",
+        });
+        return;
+    }
+
+    const total = shopping_cart.reduce((acc, item) => acc + item.precio * item.quantity, 0);
+    const summary = shopping_cart.map(item => `${item.nombre} (${item.quantity} unidades) - $${item.precio * item.quantity}`).join('\n');
+
+    Swal.fire({
+        title: "Confirmar compra",
+        text: `¿Estás seguro de que deseas realizar la compra?\n\nResumen de la compra:\n${summary}\n\nTotal: $${total}`,
+        icon: "question",
+        toast: true,
+        iconColor: "blue",
+        showCancelButton: true,
+        confirmButtonText: "Sí, realizar compra",
+        cancelButtonText: "No, revisar carrito",
+        confirmButtonColor: "green",
+        cancelButtonColor: "red",
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            Swal.fire({
+                title: "Compra realizada con éxito",
+                text: `¡Gracias por tu compra!\n\nResumen de la compra:\n${summary}\n\nTotal: $${total}`,
+                icon: "success",
+                toast: true,
+                iconColor: "green",
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "green",
+            });
+
+            EMPTY_CART();
+        }
+    });
+};
+
